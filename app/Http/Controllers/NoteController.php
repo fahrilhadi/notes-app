@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
@@ -21,7 +22,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
@@ -29,7 +30,37 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|string|max:255',
+            'content' => 'required',
+        ],
+        [
+            'title.required' => 'Title is required',
+            'content.required' => 'Content is required',
+        ]);
+
+        if (empty($request->title) && empty($request->content)) {
+            return back()
+                ->withErrors(['both' => 'Title & Content are required'])
+                ->withInput();
+        }
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        Note::create([
+            'title'  => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()
+            ->route('notes.index')
+            ->with([
+                'success' => 'Note added successfully',
+        ]);
     }
 
     /**

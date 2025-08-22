@@ -16,8 +16,8 @@
                     </div>
                 </div>
             @else
-            @foreach ($notes as $note)
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                @foreach ($notes as $note)
                     <div class="p-4 border border-gray-200 rounded-xl shadow hover:shadow-md transition flex flex-col justify-between">
                         <div>
                             <h2 class="text-lg font-semibold mb-2">{{ $note->title }}</h2>
@@ -28,6 +28,10 @@
                         <div class="flex justify-end space-x-2 mt-4">
                             <a href="note_edit.html" 
                             class="px-3 py-1 rounded-lg border border-gray-300 hover:border-black text-sm transition shadow">
+                            Show
+                            </a>
+                            <a href="note_edit.html" 
+                            class="px-3 py-1 rounded-lg border border-gray-300 hover:border-black text-sm transition shadow">
                             Edit
                             </a>
                             <button 
@@ -36,8 +40,8 @@
                             </button>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
             @endif
         </div>
     </div>
