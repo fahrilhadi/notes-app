@@ -44,6 +44,7 @@
                     </div>
                 @endforeach
             </div>
+            <x-pagination :paginator="$notes" />
             @endif
         </div>
     </div>

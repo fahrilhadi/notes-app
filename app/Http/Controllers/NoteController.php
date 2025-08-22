@@ -13,7 +13,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::latest()->get();
+        $notes = Note::latest()->paginate(4);
         return view('notes.index', compact('notes'));
     }
 
