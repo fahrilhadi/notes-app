@@ -13,7 +13,7 @@
               {{ $note->content }}
             </p>
             <div class="flex justify-end space-x-2 pt-4">
-              <a href="note_edit.html" 
+              <a href="{{ route('notes.edit', $note->id) }}" 
                  class="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:border-black transition shadow">
                  Edit
               </a>

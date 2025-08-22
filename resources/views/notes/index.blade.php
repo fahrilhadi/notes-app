@@ -30,7 +30,7 @@
                             class="px-3 py-1 rounded-lg border border-gray-300 hover:border-black text-sm transition shadow">
                             Show
                             </a>
-                            <a href="note_edit.html" 
+                            <a href="{{ route('notes.edit', $note->id) }}" 
                             class="px-3 py-1 rounded-lg border border-gray-300 hover:border-black text-sm transition shadow">
                             Edit
                             </a>
